@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build_all" default="check" basedir=".">
+	<target name="clean-all">
+		<delete dir="build"/>
+	</target>
+	<target name="build_all" depends="clean-all">
+		<mkdir dir="build/mathbeta"/>
+		<copy todir="build/mathbeta">
+			<fileset dir="WebRoot">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	</target>
+</project>
