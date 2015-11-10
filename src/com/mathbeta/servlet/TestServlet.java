@@ -17,6 +17,8 @@ public class TestServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String a = req.getParameter("a");
-		resp.getWriter().write("hello, a=" + a);
+		resp.setContentType("text/html;charset=utf-8");
+		resp.getWriter().write("hello, " + a);
+		resp.getWriter().write("<br>Greetings from TestServlet!");
 	}
 }

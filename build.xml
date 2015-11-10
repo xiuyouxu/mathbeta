@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="build_all" default="check" basedir=".">
-	<target name="clean-all">
-		<delete dir="build"/>
+<project name="mathbeta" default="build_all" basedir=".">
+	<path id="classpathcommon">
+		<pathelement location="."/>
+		<fileset dir="lib">
+		  <include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="compile-all">
+		<mkdir dir="WebRoot/WEB-INF/classes"/>
+		<javac srcdir="src" destdir="WebRoot/WEB-INF/classes" deprecation="off" failonerror="false" fork="false" memoryMaximumSize="512m" encoding="utf8" debug="on" nowarn="on">
+			<classpath refid="classpathcommon"/>
+		</javac>
 	</target>
-	<target name="build_all" depends="clean-all">
-		<mkdir dir="build/mathbeta"/>
-		<copy todir="build/mathbeta">
-			<fileset dir="WebRoot">
+	<target name="build_all" depends="compile-all">
+		<mkdir dir="WebRoot/WEB-INF/lib"/>
+		<copy todir="WebRoot/WEB-INF/lib">
+			<fileset dir="lib">
 				<include name="**/*"/>
 			</fileset>
 		</copy>
