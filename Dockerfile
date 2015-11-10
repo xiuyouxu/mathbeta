@@ -10,4 +10,4 @@ COPY ./WebRoot /tomcat/webapps/ROOT
 
 CMD echo "hello world, I am tiger!"
 
-ENTRYPOINT /tomcat/bin/startup.sh && tail -f /tomcat/logs/*.log
+ENTRYPOINT /tomcat/bin/startup.sh && tail -f /tomcat/logs/Catalina.out
