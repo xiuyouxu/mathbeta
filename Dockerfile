@@ -1,4 +1,4 @@
-FROM daocloud.io/daocloud/dao-tomcat
+FROM daocloud.io/daocloud/dao-tomcat:v7.0.55
 
 RUN mkdir /tomcat/webapps/mathbeta
 
