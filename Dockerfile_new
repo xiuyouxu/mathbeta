@@ -8,7 +8,7 @@ COPY . /root/mathbeta
 
 RUN cd /root/mathbeta && ant -f build.xml
 
-RUN cp /root/mathbeta/WebRoot/* $CATALINA_HOME/webapps/ROOT
+RUN cp -r /root/mathbeta/WebRoot/* $CATALINA_HOME/webapps/ROOT
 
 RUN touch $CATALINA_HOME/logs/Catalina.log
 
