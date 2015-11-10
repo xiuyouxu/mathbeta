@@ -8,6 +8,8 @@ COPY ./WebRoot /tomcat/webapps/ROOT
 
 #RUN cd /root && cp -r build/mathbeta /root/tomcat/webapps
 
+RUN touch /tomcat/logs/Catalina.out
+
 CMD echo "hello world, I am tiger!"
 
 ENTRYPOINT /tomcat/bin/startup.sh && tail -f /tomcat/logs/Catalina.out
