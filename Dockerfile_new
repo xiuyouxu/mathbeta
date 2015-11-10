@@ -1,0 +1,15 @@
+FROM index.docker.io/guligo/jdk-maven-ant-tomcat:latest
+
+RUN rm -rf /tomcat/webapps/ROOT/*
+
+RUN mkdir /root/mathbeta
+
+COPY . /root/mathbeta
+
+RUN cd /root/mathbeta && ant -f build.xml
+
+RUN cp /root/mathbeta/WebRoot/* /tomcat/webapps/ROOT
+
+RUN touch /tomcat/logs/Catalina.log
+
+ENTRYPOINT /tomcat/bin/startup.sh && tail -f /tomcat/logs/Catalina.log
