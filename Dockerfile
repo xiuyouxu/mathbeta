@@ -1,15 +1,17 @@
-FROM daocloud.io/daocloud/dao-tomcat:v7.0.55
+FROM index.docker.io/guligo/jdk-maven-ant-tomcat:latest
 
-#RUN mkdir /tomcat/webapps/mathbeta
+RUN rm -rf $CATALINA_HOME/webapps/ROOT/*
 
-COPY ./WebRoot /tomcat/webapps/ROOT
+RUN mkdir /root/mathbeta
 
-#RUN cd /root && ant -f build.xml
+COPY . /root/mathbeta
 
-#RUN cd /root && cp -r build/mathbeta /root/tomcat/webapps
+RUN cd /root/mathbeta && ant -f build.xml
 
-RUN touch /tomcat/logs/Catalina.log
+RUN cp -r /root/mathbeta/WebRoot/* $CATALINA_HOME/webapps/ROOT
 
-CMD echo "hello world, I am tiger!"
+RUN rm -rf /root/mathbeta
 
-ENTRYPOINT /tomcat/bin/startup.sh && tail -f /tomcat/logs/Catalina.log
+RUN touch $CATALINA_HOME/logs/Catalina.log
+
+ENTRYPOINT $CATALINA_HOME/bin/startup.sh && tail -f $CATALINA_HOME/logs/Catalina.log

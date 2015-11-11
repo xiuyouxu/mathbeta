@@ -18,7 +18,7 @@ public class TestServlet extends HttpServlet{
 			throws ServletException, IOException {
 		String a = req.getParameter("a");
 		resp.setContentType("text/html;charset=utf-8");
-		resp.getWriter().write("hello, " + a);
+		resp.getWriter().write("hello, <span style=\"color:#f00;\">" + a + "</span>");
 		resp.getWriter().write("<br>Greetings from TestServlet!");
 	}
 }
