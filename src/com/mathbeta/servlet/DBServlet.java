@@ -25,6 +25,7 @@ public class DBServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String result = "";
 		try {
 			Map<String, String> env = System.getenv();
 			String url = env.get("MYSQL_CONNECTION");
@@ -54,10 +55,12 @@ public class DBServlet extends HttpServlet {
 
 			String s = JSON.toJSONString(ret);
 			System.out.println(s);
-			resp.setContentType("text/html;charset=utf-8");
-			resp.getWriter().write(s);
+			result = s;
 		} catch (Exception e) {
 			e.printStackTrace();
+			result = e.getMessage() + ", exception occured...";
 		}
+		resp.setContentType("text/html;charset=utf-8");
+		resp.getWriter().write(result);
 	}
 }
