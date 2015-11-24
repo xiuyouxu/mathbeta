@@ -46,7 +46,15 @@ public class DBServlet extends HttpServlet {
 			stmt.close();
 			conn.close();
 
-			resp.getWriter().write(JSON.toJSONString(list));
+			Map<String, Object> ret = new HashMap<String, Object>();
+			ret.put("url", url);
+			ret.put("user", user);
+			ret.put("passwd", passwd);
+			ret.put("list", list);
+
+			String s = JSON.toJSONString(ret);
+			System.out.println(s);
+			resp.getWriter().write(s);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
