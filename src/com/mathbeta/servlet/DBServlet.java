@@ -54,6 +54,7 @@ public class DBServlet extends HttpServlet {
 
 			String s = JSON.toJSONString(ret);
 			System.out.println(s);
+			resp.setContentType("text/html;charset=utf-8");
 			resp.getWriter().write(s);
 		} catch (Exception e) {
 			e.printStackTrace();
