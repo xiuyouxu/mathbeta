@@ -24,7 +24,8 @@ script:
     - ps -ef|grep java
     - ls -l $CATALINA_HOME/webapps/ROOT/
     - ping -c 3 127.0.0.1
-    - netstat -anp|grep java
+#    - netstat -anp|grep java
     - hostname
+    - wget http://localhost:8080
     - wget http://`hostname`:8080/test.do?a=mytest
     - wget http://`hostname`:8080/userlist.do
