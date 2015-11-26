@@ -14,7 +14,7 @@ before_script:
     - echo $MYENV
     - rm -rf $CATALINA_HOME/webapps/ROOT/*
     - ant -f build.xml
-    - cp WebRoot/* $CATALINA_HOME/webapps/ROOT
+    - cp -r WebRoot/* $CATALINA_HOME/webapps/ROOT
     - bash $CATALINA_HOME/bin/startup.sh
 
 script:
