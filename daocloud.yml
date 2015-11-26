@@ -1,25 +1,23 @@
-image: daocloud/ci-java:oraclejdk6
+image: index.docker.io/guligo/jdk-maven-ant-tomcat:latest
 
 services:
-
+    - mathbeta
 env:
     - MYENV = "hello"
 
 install:
     - echo $MYENV
-    - echo "This is an install segment"
-    - echo "Here, we usually run scripts to setup a base environment"
-    - echo "For customized base image, you need to install git here unless you have git installed in your base image"
-    - echo "e.g., apt-get install -y git-core"
+    - pwd
+    - apt-get install -y git-core
 
 before_script:
     - echo $MYENV
-    - echo "This is an before_script segment"
-    - echo "Here, we usually run scripts to prepare our test"
+    - rm -rf $CATALINA_HOME/webapps/ROOT/*
+    - ant -f build.xml
+    - cp -r /root/mathbeta/WebRoot/* $CATALINA_HOME/webapps/ROOT
+    - bash $CATALINA_HOME/bin/startup.sh
 
 script:
     - echo $MYENV
-    - echo "This is an script segment"
-    - echo "Run test cases here"
-    - echo ""
-    - ant -f build.xml
+    - curl http://127.0.0.1:8080/test.do?a=mytest
+    - curl http://127.0.0.1:8080/userlist.do

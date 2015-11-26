@@ -19,6 +19,6 @@
 			<fileset dir="lib">
 				<include name="**/*"/>
 			</fileset>
-		</copy>  
+		</copy>
 	</target>
 </project>
