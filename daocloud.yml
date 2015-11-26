@@ -8,6 +8,9 @@ env:
 install:
     - echo $MYENV
     - pwd
+    - uname -a
+    - lsb_release -a
+    - sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
 #    - apt-get install -y git-core
 
 before_script:
