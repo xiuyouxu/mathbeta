@@ -28,4 +28,6 @@ script:
     - hostname
     - wget http://localhost:8080
     - wget http://`hostname`:8080/test.do?a=mytest
+    - cat test.do?a=mytest
     - wget http://`hostname`:8080/userlist.do
+    - cat userlist.do
