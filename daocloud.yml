@@ -1,7 +1,7 @@
 image: index.docker.io/guligo/jdk-maven-ant-tomcat:latest
 
 services:
-    - mathbeta
+    - mysql
 env:
     - MYENV = "hello"
 
