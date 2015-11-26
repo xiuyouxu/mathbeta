@@ -21,5 +21,5 @@ before_script:
 
 script:
     - echo $MYENV
-    - curl http://127.0.0.1:8080/test.do?a=mytest
-    - curl http://127.0.0.1:8080/userlist.do
+    - wget http://127.0.0.1:8080/test.do?a=mytest
+    - wget http://127.0.0.1:8080/userlist.do
