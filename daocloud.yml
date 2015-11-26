@@ -8,7 +8,7 @@ env:
 install:
     - echo $MYENV
     - pwd
-    - apt-get install -y git-core
+#    - apt-get install -y git-core
 
 before_script:
     - echo $MYENV
