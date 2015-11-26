@@ -26,15 +26,15 @@ public class DBServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String result = "";
+		Map<String, String> env = System.getenv();
+		StringBuilder sb = new StringBuilder("jdbc:mysql://");
+		sb.append(env.get("MYSQL_PORT_3306_TCP_ADDR")).append(":").append(
+				env.get("MYSQL_PORT_3306_TCP_PORT")).append("/").append(
+				env.get("MYSQL_INSTANCE_NAME"));
+		String url = sb.toString();
+		String user = env.get("MYSQL_USERNAME");
+		String passwd = env.get("MYSQL_PASSWORD");
 		try {
-			Map<String, String> env = System.getenv();
-			StringBuilder sb = new StringBuilder("jdbc:mysql://");
-			sb.append(env.get("MYSQL_PORT_3306_TCP_ADDR")).append(":").append(
-					env.get("MYSQL_PORT_3306_TCP_PORT")).append("/").append(
-					env.get("MYSQL_INSTANCE_NAME"));
-			String url = sb.toString();
-			String user = env.get("MYSQL_USERNAME");
-			String passwd = env.get("MYSQL_PASSWORD");
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, passwd);
 			PreparedStatement stmt = conn
@@ -64,6 +64,9 @@ public class DBServlet extends HttpServlet {
 			e.printStackTrace();
 			result = e.getMessage() + ", exception occured...";
 		}
+		result += "<br>url: " + url;
+		result += "<br>user: " + user;
+		result += "<br>passwd: " + passwd;
 		resp.setContentType("text/html;charset=utf-8");
 		resp.getWriter().write(result);
 	}
