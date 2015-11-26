@@ -21,5 +21,7 @@ before_script:
 
 script:
     - echo $MYENV
+    - ps -ef|grep java
+    - ls -l $CATALINA_HOME/webapps/ROOT/
     - wget http://127.0.0.1:8080/test.do?a=mytest
     - wget http://127.0.0.1:8080/userlist.do
