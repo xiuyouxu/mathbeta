@@ -5,7 +5,7 @@
 		<fileset dir="lib">
 		  <include name="**/*.jar"/>
 		</fileset>
-	</path>
+	</path> 
 
 	<target name="compile-all">
 		<mkdir dir="WebRoot/WEB-INF/classes"/>
