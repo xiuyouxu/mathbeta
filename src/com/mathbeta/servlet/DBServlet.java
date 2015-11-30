@@ -30,13 +30,13 @@ public class DBServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder("jdbc:mysql://");
 		sb.append(env.get("MYSQL_PORT_3306_TCP_ADDR")).append(":").append(
 				env.get("MYSQL_PORT_3306_TCP_PORT")).append("/").append(
-//				env.get("MYSQL_INSTANCE_NAME"));
-				"test");
+				env.get("MYSQL_INSTANCE_NAME"));
+//				"test");
 		String url = sb.toString();
-//		String user = env.get("MYSQL_USERNAME");
-		String user = "root";
-//		String passwd = env.get("MYSQL_PASSWORD");
-		String passwd = "";
+		String user = env.get("MYSQL_USERNAME");
+//		String user = "root";
+		String passwd = env.get("MYSQL_PASSWORD");
+//		String passwd = "";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, passwd);
