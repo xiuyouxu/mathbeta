@@ -10,19 +10,24 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `npm install` command
-    - uname -a
+#    - uname -a
     # A step that executes `npm test` command
-    - rm -rf $CATALINA_HOME/webapps/ROOT/*
-    - ant -f build.xml
-    - cp -r WebRoot/* $CATALINA_HOME/webapps/ROOT
-    - bash $CATALINA_HOME/bin/startup.sh
-    - wget http://`hostname`:8080/test.do?a=mytest
-    - cat test.do?a=mytest
+#    - rm -rf $CATALINA_HOME/webapps/ROOT/*
+#    - ant -f build.xml
+#    - cp -r WebRoot/* $CATALINA_HOME/webapps/ROOT
+#    - bash $CATALINA_HOME/bin/startup.sh
+#    - wget http://`hostname`:8080/test.do?a=mytest
+#    - cat test.do?a=mytest
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
-#    - script:
-#        name: echo nodejs information
-#        code: |
-#          echo "node version $(node -v) running"
-#          echo "npm version $(npm -v) running"
+    - script:
+        name: echo nodejs information
+        code: |
+          uname -a
+          rm -rf $CATALINA_HOME/webapps/ROOT/*
+          ant -f build.xml
+          cp -r WebRoot/* $CATALINA_HOME/webapps/ROOT
+          bash $CATALINA_HOME/bin/startup.sh
+          wget http://`hostname`:8080/test.do?a=mytest
+          cat test.do?a=mytest
