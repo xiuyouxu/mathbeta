@@ -29,5 +29,5 @@ build:
           ant -f build.xml
           cp -r WebRoot/* $CATALINA_HOME/webapps/ROOT
           bash $CATALINA_HOME/bin/startup.sh
-          wget http://`hostname`:8080/test.do?a=mytest
-          cat test.do?a=mytest
+#          wget http://`hostname`:8080/test.do?a=mytest
+#          cat test.do?a=mytest
