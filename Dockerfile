@@ -12,6 +12,6 @@ RUN cp -r /root/mathbeta/WebRoot/* $CATALINA_HOME/webapps/ROOT
 
 RUN rm -rf /root/mathbeta
 
-RUN touch $CATALINA_HOME/logs/Catalina.log
+#RUN touch $CATALINA_HOME/logs/catalina.log
 
-ENTRYPOINT $CATALINA_HOME/bin/startup.sh && tail -f $CATALINA_HOME/logs/Catalina.log
+ENTRYPOINT $CATALINA_HOME/bin/startup.sh && tail -f $CATALINA_HOME/logs/catalina.log
