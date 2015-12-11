@@ -6,7 +6,7 @@
 		  <include name="**/*.jar"/>
 		</fileset>
 	</path> 
-
+	<!-- compile all java files -->
 	<target name="compile-all">
 		<mkdir dir="WebRoot/WEB-INF/classes"/>
 		<javac srcdir="src" destdir="WebRoot/WEB-INF/classes" deprecation="off" failonerror="false" fork="false" memoryMaximumSize="512m" encoding="utf8" debug="on" nowarn="on">
